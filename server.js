@@ -22,7 +22,7 @@ Storage.prototype.add = function(name) {
 
 var storage = new Storage();
 
-storage.add("Broad beans");
+storage.add("Broad Beans");
 storage.add("Tomatoes");
 storage.add("Peppers");
 
@@ -64,3 +64,6 @@ app.listen(process.env.PORT || 7000, function(err) {
 	if (err) console.log(err);
 	else console.log("Connected to port 7000...");
 });
+
+exports.app = app;
+exports.storage = storage;
