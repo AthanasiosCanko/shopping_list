@@ -29,10 +29,10 @@
 					password: $("#password").val()
 				},
 				success: function(json) {
-					$("p").html("Sign up successful!");
+					$("p").html("Signup successful!");
 				},
 				error: function(err) {
-					console.error(err);
+					$("p").html(err);
 				}
 			});
 		});
