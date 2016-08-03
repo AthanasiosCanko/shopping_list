@@ -46,7 +46,8 @@ app.post('/signup', function(req, res) {
 	
 	collection.insert({username: username, password: password}, function(err, snippet) {
 		if (err) console.error(err);
-		else console.log("User added: ", snippet);
+		else {console.log("User added: ", snippet);
+		res.status(200).json(snippet);}
 	});
 });
 
