@@ -1,0 +1,67 @@
+<html align='middle'>
+
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<script>
+	$("document").ready(function() {
+		$(".btn-warning").on("click", function() {
+			
+			$.ajax({
+				url: '/signup',
+				type: 'GET',
+				success: function(data) {
+					console.log(data);
+				},
+				error: function(err) {
+					console.log(err);
+				}
+			});
+		
+			$.ajax({
+				url: '/signup',
+				type: 'POST',
+				dataType: 'json',
+				data: {
+					username: $("#username").val(),
+					password: $("#password").val()
+				},
+				success: function(json) {
+					$("p").html("Sign up successful!");
+				},
+				error: function(err) {
+					console.error(err);
+				}
+			});
+		});
+	});
+</script>
+
+<style>
+	body {
+		padding: 80px;
+	}
+	
+	h1, h2 {
+		font-family: HelveticaNeue-Light;
+	}
+	
+	p {
+		font-family: HelveticaNeue-Light;
+	}
+</style>
+
+<body>
+	<div class="well">
+		<h1> Shopping List </h1>
+		<h2> Sign up </h2>
+		<input type="text" class="form-control" id="username" placeholder="Type username here..."><br>
+		<input type="password" class="form-control" id="password" placeholder="Type password here..."><br>
+		<button class="btn btn-warning"> Sign up </button>
+		<p></p>
+	</div>
+</body>
+
+</html>

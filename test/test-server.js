@@ -9,6 +9,7 @@ var storage = server.storage;
 chai.use(chaiHttp);
 
 describe('Shopping List', function() {
+
     it('should list items on get', function(done) {
     	chai.request(app)
     		.get("/items")
@@ -29,6 +30,7 @@ describe('Shopping List', function() {
     			done();
     		});
     });
+    
     it('should add an item on post', function(done) {
     	chai.request(app)
     		.post('/items')
@@ -52,6 +54,7 @@ describe('Shopping List', function() {
     			done();
     		});
     });
+    
     it('should edit an item on put', function(done) {
     	chai.request(app)
     		.put('/items/2')
@@ -69,6 +72,7 @@ describe('Shopping List', function() {
     			done();
     		});
     });
+    
     it('should delete an item on delete', function(done) {
     	chai.request(app)
     		.delete('/items/2')
