@@ -30,23 +30,7 @@ describe('Shopping List', function() {
     			done();
     		});
     });
-    
-    it('should add an item on post', function(done) {
-    	chai.request(app)
-    		.post('/signup')
-    		.send({'name': 'Athanasios', 'password': '123456'})
-    		.end(function(err, res) {
-    			res.should.have.status(200);
-    			res.should.be.json;
-    			res.body.should.be.a('object');
-    			res.body.should.have.property('name');
-    			res.body.should.have.property('password');
-    			res.body.password.should.be.a('string');
-    			res.body.name.should.be.a('string');
-    			done();
-    		});
-    });
-    /*
+
     it('should add an item on post', function(done) {
     	chai.request(app)
     		.post('/items')
@@ -103,6 +87,6 @@ describe('Shopping List', function() {
     			done();
     		});
     
-    }); */
+    });
 });
 

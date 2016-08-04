@@ -3,15 +3,16 @@ var MongoClient = require('mongodb').MongoClient;
 var bodyParser = require('body-parser');
 
 var app = express();
+
 app.use(express.static('public_two'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 
-	var Storage = function() {
-    	this.items = [];
-    	this.id = 0;
-	};
+var Storage = function() {
+   	this.items = [];
+   	this.id = 0;
+};
 
 Storage.prototype.add = function(name) {
     var item = {name: name, id: this.id};
@@ -27,31 +28,6 @@ var storage = new Storage();
 storage.add("Broad Beans");
 storage.add("Tomatoes");
 storage.add("Peppers");
-
-MongoClient.connect("mongodb://athanasios:athanasios@ds139665.mlab.com:39665/mongodb-mongoose-thano", function(err, db) {
-	if (err) console.log(err);
-	else console.log("Database connected...");
-	
-	var collection = db.collection("users-shopping-list");
-	
-
-app.get('/signup', function(req, res) {
-	res.status(200).send("Success!");
-});
-
-app.post('/signup', function(req, res) {
-	console.log(req.body);
-	var username = req.body.username;
-	var password = req.body.password;
-	
-	collection.insert({username: username, password: password}, function(err, snippet) {
-		if (err) console.error(err);
-		else {console.log("User added: ", snippet);
-		res.status(200).json(snippet);}
-	});
-});
-
-
 
 app.get('/items', function(req, res) {
 	res.status(200).json(storage.items);
@@ -86,11 +62,6 @@ app.delete('/items/:id', function(req, res) {
 
 	res.status(201).json(storage.items);
 });
-
-
-});
-
-
 
 app.listen(process.env.PORT || 7000, function(err) {
 	if (err) console.log(err);
